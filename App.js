@@ -6,14 +6,11 @@ import { HomeScreen, HomeDetailScreen } from './screens/HomeScreen'
 import styles from './styles.js'
 
 const HomeStack = createStackNavigator({
-  Home: {
-    screen: HomeScreen,
-    navigationOptions: {
-      // title: 'Home',
-      headerVisible: false
-    },
-  },
+  Home: HomeScreen,
   HomeDetailScreen: HomeDetailScreen
+},
+{
+  headerMode: 'none'
 })
 
 const RootTab = createBottomTabNavigator({
@@ -34,6 +31,7 @@ export default class App extends React.Component {
       'gorditas-b': require('./assets/fonts/Gorditas-Bold.ttf'),
       'gorditas': require('./assets/fonts/Gorditas-Regular.ttf'),
       'modak': require('./assets/fonts/Modak-Regular.ttf'),
+      'aksana': require('./assets/fonts/Aksana.ttf'),
     })
 
     this.setState({ loading: false })
@@ -42,6 +40,6 @@ export default class App extends React.Component {
   render() {
     return this.state.loading
       ? <Text>Loading..</Text>
-      : <RootTab />
+      : <HomeStack />
   }
 }

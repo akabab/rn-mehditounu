@@ -2,7 +2,7 @@ import React from 'react';
 import { Dimensions, ImageBackground, View } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import banana from '../assets/imgs/banana.png';
-import mehdinu from '../assets/imgs/mehdinu.png'
+import mehdinu from '../assets/imgs/mehdinu-bob.png'
 
 const MONEY_DIMENSIONS = { width: 43, height: 60 };
 const SCREEN_DIMENSIONS = Dimensions.get('window');

@@ -9,9 +9,21 @@ import {
   TouchableOpacity,
   Image,
   ImageBackground,
+  ScrollView,
+  StatusBar,
 } from 'react-native'
+import * as Animatable from 'react-native-animatable'
 import MakeItRain from '../components/MakeItRain.js'
 import mehdinu from '../assets/imgs/mehdinu.png'
+import cocos from '../assets/imgs/cocos.jpg'
+import flex from '../assets/imgs/flex.jpg'
+import aero1 from '../assets/imgs/aero1.gif'
+import aero2 from '../assets/imgs/aero2.gif'
+import aero3 from '../assets/imgs/aero3.gif'
+import aero4 from '../assets/imgs/aero4.gif'
+import homeBg from '../assets/imgs/home-bg.png'
+import logo from '../assets/imgs/logo.png'
+
 import styles from '../styles.js'
 
 
@@ -53,6 +65,8 @@ export class HomeDetailScreen extends React.Component {
   }
 
   render() {
+    const { goBack } = this.props.navigation
+
     return (
       <View>
         <Modal animationType="slide" visible={this.state.modalVisible}>
@@ -61,7 +75,17 @@ export class HomeDetailScreen extends React.Component {
           </TouchableHighlight>
         </Modal>
 
-        <B onPress={() => this.setModalVisible(true)}>Almost there...</B>
+        <B onPress={() => goBack()}>back</B>
+        <B onPress={() => this.setModalVisible(true)}>Almost there..</B>
+        <ScrollView>
+          <Image style={{ width: '100%' }} source={aero1} />
+          <Image style={{ width: '100%' }} source={aero2} />
+          <Image style={{ width: '100%' }} source={aero3} />
+          <Image style={{ width: '100%' }} source={aero4} />
+          <View style={[styles.container, { alignItems: 'flex-start' }]}>
+            <B onPress={() => this.props.navigation.navigate('HomeDetailScreen')}>Mehdi tout nu</B>
+          </View>
+        </ScrollView>
       </View>
     )
   }
@@ -81,15 +105,17 @@ export class HomeScreen extends React.Component {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
-        <View style={styles.container}>
-          <Text style={styles.h}><Text style={{ color: 'pink' }}>CSS</Text>OS</Text>
-          <Text style={styles.p}>Le stylesheet' framework des cassos</Text>
+      <ImageBackground style={styles.container} source={homeBg}>
+        <StatusBar barStyle="light-content" />
+          <Animatable.View animation="slideOutDown" iterationCount={'infinite'} duration={1000} direction="alternate">
+            <Image style={{ marginTop: -60 }} source={logo} />
+          </Animatable.View>
+        <View style={[{ flex: 1, marginTop: 125 }]}>
+          <Animatable.View animation="rubberBand" iterationCount={'infinite'} iterationDelay={1000} duration={1000} direction="normal">
+            <Text style={[styles.text, { width: 100, textAlign: 'center', lineHeight: 30 }]}>touch to enter</Text>
+          </Animatable.View>
         </View>
-        <View style={[styles.container, { alignItems: 'flex-start' }]}>
-          <B onPress={() => this.props.navigation.navigate('HomeDetailScreen')}>Mehdi tout nu</B>
-        </View>
-      </View>
+      </ImageBackground>
     )
   }
 }
