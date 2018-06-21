@@ -4,6 +4,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import { Font } from 'expo'
 import { HomeScreen, HomeDetailScreen } from './screens/HomeScreen'
 import styles from './styles.js'
+import CameraExemple from './components/CameraExemple.js'
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,

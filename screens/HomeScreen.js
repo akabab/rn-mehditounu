@@ -13,6 +13,7 @@ import {
   StatusBar,
 } from 'react-native'
 import * as Animatable from 'react-native-animatable'
+import { Dimensions } from 'react-native'
 import MakeItRain from '../components/MakeItRain.js'
 import mehdinu from '../assets/imgs/mehdinu.png'
 import cocos from '../assets/imgs/cocos.jpg'
@@ -24,7 +25,7 @@ import aero4 from '../assets/imgs/aero4.gif'
 import homeBg from '../assets/imgs/home-bg.png'
 import logo from '../assets/imgs/logo.png'
 
-import styles from '../styles.js'
+import styles, { colors } from '../styles.js'
 
 
 const B = ({ onPress, children }) =>
@@ -46,7 +47,7 @@ class Memehdiiii extends React.Component {
           : <ImageBackground style={[styles.container, { flex: 1 }]} source={mehdinu}>
               <Text
                 onPress={() => this.setState({ banana: true })}
-                style={{ marginTop: 100, backgroundColor: 'red', fontSize: 30, padding: 2 }}>scrape here</Text>
+                style={{ marginTop: 100, backgroundColor: colors.aquamarine, color: colors.darkJet, fontSize: 20, padding: 5 }}>scrape here</Text>
             </ImageBackground>
         }
       </View>
@@ -61,7 +62,7 @@ export class HomeDetailScreen extends React.Component {
   }
 
   setModalVisible = visible => {
-    this.setState({ modalVisible: visible });
+    this.setState({ modalVisible: visible })
   }
 
   render() {
@@ -75,16 +76,13 @@ export class HomeDetailScreen extends React.Component {
           </TouchableHighlight>
         </Modal>
 
-        <B onPress={() => goBack()}>back</B>
-        <B onPress={() => this.setModalVisible(true)}>Almost there..</B>
         <ScrollView>
+          <B onPress={() => goBack()}>back</B>
           <Image style={{ width: '100%' }} source={aero1} />
           <Image style={{ width: '100%' }} source={aero2} />
           <Image style={{ width: '100%' }} source={aero3} />
           <Image style={{ width: '100%' }} source={aero4} />
-          <View style={[styles.container, { alignItems: 'flex-start' }]}>
-            <B onPress={() => this.props.navigation.navigate('HomeDetailScreen')}>Mehdi tout nu</B>
-          </View>
+          <B onPress={() => this.setModalVisible(true)}>Almost there..</B>
         </ScrollView>
       </View>
     )
@@ -107,12 +105,13 @@ export class HomeScreen extends React.Component {
     return (
       <ImageBackground style={styles.container} source={homeBg}>
         <StatusBar barStyle="light-content" />
-          <Animatable.View animation="slideOutDown" iterationCount={'infinite'} duration={1000} direction="alternate">
-            <Image style={{ marginTop: -60 }} source={logo} />
+          <Animatable.View style={styles.container} animation="slideOutDown" iterationCount={'infinite'} duration={1000} direction="alternate">
+            <Image style={{ width: Dimensions.get('window').width, marginTop: -300 }} resizeMode="contain" source={logo} />
           </Animatable.View>
-        <View style={[{ flex: 1, marginTop: 125 }]}>
+        <View style={[{ flex: 1, marginTop: -110 }]}>
           <Animatable.View animation="rubberBand" iterationCount={'infinite'} iterationDelay={1000} duration={1000} direction="normal">
-            <Text style={[styles.text, { width: 100, textAlign: 'center', lineHeight: 30 }]}>touch to enter</Text>
+            <Text style={[styles.text, { width: 100, textAlign: 'center', lineHeight: 30 }]}
+              onPress={() => this.props.navigation.navigate('HomeDetailScreen')}>touch to enter</Text>
           </Animatable.View>
         </View>
       </ImageBackground>

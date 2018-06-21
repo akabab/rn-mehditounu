@@ -1,5 +1,19 @@
 import { StyleSheet } from 'react-native'
 
+const pinkLace = '#ffe4fa'
+const aquamarine = '#8ef8ce'
+const lavender = '#f1a1fd'
+const lightBlue = '#6360f7'
+const darkJet = '#352e31'
+
+export const colors = {
+  pinkLace,
+  aquamarine,
+  lavender,
+  lightBlue,
+  darkJet,
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -13,20 +27,20 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   h: {
-    fontFamily: 'gorditas-b',
+    fontFamily: 'aksana',
     fontWeight: '900',
     fontSize: 40,
     padding: 10,
   },
   p: {
-    fontFamily: 'gorditas-b',
+    fontFamily: 'aksana',
     fontSize: 20,
     padding: 10,
   },
   button: {
-    fontFamily: 'modak',
-    fontSize: 30,
-    backgroundColor: 'pink',
+    fontFamily: 'aksana',
+    fontSize: 40,
+    backgroundColor: lightBlue,
     color: 'white',
     padding: 3,
     paddingLeft: 10,
